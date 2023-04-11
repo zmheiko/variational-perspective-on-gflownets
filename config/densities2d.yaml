@@ -1,0 +1,69 @@
+args:
+  exp_name: "densities2d"
+  save_dir: "./"
+  data: '8gaussians'  # 2spirals 8gaussians pinwheel circles moons swissroll checkerboard
+  n_iters: 1e5
+  batch_size: 128
+  print_every: 100
+  eval_every: 2000
+  lr: 1e-3
+  ebm_every: 1
+
+  type: rklrf
+  hid: 256
+  hid_layers: 3
+  leaky: 1
+  gfn_bn: 0
+  init_zero: 0
+  gmodel: "mlp"
+  train_steps: 1
+  l1loss: 0
+
+# train:
+  with_mh: 1
+  rand_k: 0
+  lin_k: 1
+  warmup_k: 1e5
+  K: -1
+
+  rand_coef: 0
+  back_ratio: 0.
+  clip: -1.
+  temp: 1
+  opt: "adam"
+  glr: 1e-3
+  zlr: 1
+  momentum: 0.0
+  gfn_weight_decay: 0.0
+
+  fixed_ebm: False 
+  learned_log_Z: 0
+  cv: const_learned # const_learned, const_log_Z, loo_log_Z, loo_rb_log_Z
+  device: 0
+  debug: False
+  mode: test
+  seed: 0
+
+box: 
+  hostname: "unknown"
+
+hydra:
+  # verbose: True 
+  run:
+    # ${now:%Y-%m-%d_%H-%M-%S}
+    # dir: runs/${args.exp_name}/${hydra.job.override_dirname}
+    dir: multiruns/${box.hostname}/${args.exp_name}/${hydra.job.override_dirname}
+  sweep:
+    dir: multiruns/${box.hostname}/${args.exp_name}
+    subdir: ${hydra.job.override_dirname}
+  job: 
+    name: densities2d
+    config:
+      override_dirname:
+        exclude_keys: 
+          - args.exp_name
+          - args.print_every
+          - args.device
+          - box.hostname
+          - args.mode
+          #- args.eval_every

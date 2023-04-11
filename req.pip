@@ -1,0 +1,7 @@
+jax
+torch == 1.12.1
+tensorflow_probability
+tqdm
+optax
+hydra-core
+matplotlib
