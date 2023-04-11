@@ -4,8 +4,9 @@ Code for the TMLR paper [A Variational Perspective on Generative Flow Networks](
 All required packages are listed in `req.pip` and can be installed by running `pip install -r req.pip`.
 
 **Running experiments:**
-- Executing the `run_ising.sh` runs the Ising model experiments with the parameters specified in the script.
-- Executing the `run_densities2d.sh` script runs the synthetic density experiments with the parameters specified in the script. The code for the synthetic density experiments is based on a fork of the code of the ICML 2022 paper [Generative Flow Networks for Discrete Probabilistic Modeling](https://arxiv.org/abs/2202.01361) by Dinghuai Zhang, Nikolay Malkin, Zhen Liu, Alexandra Volokhova, Aaron Courville, and Yoshua Bengio.
+- Clone repository and run `git submodule init` followed by `git submodule update` to initiallize and fetch the nesseccary submodule. The submodule is needed for the synthetic density experiments only and is a fork of the code of the ICML 2022 paper [Generative Flow Networks for Discrete Probabilistic Modeling](https://arxiv.org/abs/2202.01361) by Dinghuai Zhang, Nikolay Malkin, Zhen Liu, Alexandra Volokhova, Aaron Courville, and Yoshua Bengio.
+- Execute `run_densities2d.sh` to run the synthetic density experiments with the parameters specified in the script.
+- Execute `run_ising.sh` to run the Ising model experiments with the parameters specified in the script.
 
 **Inspecting results:**
-Results (model parameters, evaluation metrics, and sample plots of final model) are saved in `./multiruns/<hostname>/<experiment_string>/` in `params`, `eval`, and `plots` respectively.
+Results (model parameters, evaluation metrics, and sample plots of final model) are saved in `./multiruns/<hostname>/<experiment_name>/<experiment_id_string>/` in `params`, `eval`, and `plots` respectively.

@@ -1,0 +1,3 @@
+[submodule "eb_gfn"]
+	path = eb_gfn
+	url = https://github.com/zmheiko/eb_gfn
