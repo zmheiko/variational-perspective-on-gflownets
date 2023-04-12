@@ -91,7 +91,7 @@ def run_experiment(cfg : DictConfig) -> None:
     ############## EBM 
     energy_model = EnergyModel(discrete_dim, 256).to(device)
     if cfg.args.fixed_ebm:
-        load_model({args.data: energy_model}, path=os.path.join(hydra.utils.get_original_cwd(), "densities2d_ebms"))
+        load_model({args.data: energy_model}, path=os.path.join(hydra.utils.get_original_cwd(), "densities2d_ebms_fixed"))
     optimizer = torch.optim.Adam(energy_model.parameters(), lr=args.lr)
     log.info("model: {:}".format(energy_model))
 
